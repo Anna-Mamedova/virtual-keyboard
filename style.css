@@ -1,0 +1,84 @@
+.rows-wrapper {
+    border: 4px solid #d7adc1;
+    background: #ffdcf5;
+    border-radius: 20px;
+    padding: 10px;
+    width: 865px;
+}
+
+.row {
+    display: flex;
+}
+
+.key-button {
+    font-size: 18px;
+    color: #3f011f;
+    margin: 5px;
+    height: 50px;
+    width: 50px;
+    border: none;
+    border-radius: 5px;
+    background: #d7adc1;
+    box-shadow:  5px 5px 13px #9d7e8d,
+                 -5px -5px 13px #ffdcf5;
+}
+
+.key-button:hover {
+    background: linear-gradient(145deg, #c29cae, #e6b9cf);
+    box-shadow:  5px 5px 13px #9d7e8d,
+                 -5px -5px 13px #ffdcf5;
+}
+
+.key-button:active { 
+    background: #d7adc1;
+    box-shadow: inset 5px 5px 13px #9d7e8d,
+                inset -5px -5px 13px #ffdcf5;
+}
+
+.Backspace,
+.Tab {
+    width: 75px;
+}
+
+.CapsLock,
+.Enter {
+    width: 92px;
+}
+
+.ShiftLeft {
+    width: 135px;
+}
+
+.MetaLeft,
+.MetaRight {
+    width: 70px;
+}
+
+.Space {
+    width: 335px;
+}
+
+.Backspace,
+.Enter,
+.ShiftRight {
+    font-size: 13px;
+    text-align: end;
+    padding-top: 30px;
+}
+
+.Tab,
+.CapsLock,
+.ShiftLeft {
+    font-size: 13px;
+    text-align: start;
+    padding-top: 30px;
+}
+
+.MetaLeft,
+.MetaRight,
+.ControlLeft,
+.AltLeft,
+.AltRight {
+    font-size: 13px;
+    padding-top: 30px;
+}
