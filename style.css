@@ -53,7 +53,8 @@
                  -5px -5px 13px #ffdcf5;
 }
 
-.key-button:active { 
+.key-button:active,
+.key-button_active { 
     background: #ffffff;
     box-shadow: inset 5px 5px 13px #bababa,
             inset -5px -5px 13px #ffffff;
