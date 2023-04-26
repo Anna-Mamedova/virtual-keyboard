@@ -101,7 +101,7 @@ const KEY_VALUES = [
       en: {
         default: '7',
         shift: '&',
-        caps: '17',
+        caps: '7',
       },
     },
     {
