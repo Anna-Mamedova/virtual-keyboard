@@ -5,6 +5,7 @@ let letterSize = 'default';
 let keyButtons;
 let rowsWrapper;
 let textarea;
+let textareaPosition = 0;
 let isShift = '';
 
 function getAllEl() {
@@ -56,13 +57,70 @@ function buildKeyboard(lang, size, code) {
 
 buildKeyboard(language, letterSize);
 
+textarea.addEventListener('click', () => {
+  textareaPosition = textarea.selectionStart;
+});
+
+function updateTextarea(el, n, l) {
+  const FIRST_PART = textarea.value.split('').slice(0, textareaPosition - l);
+  const SECOND_PART = textarea.value.split('').slice(textareaPosition, textarea.value.length);
+  textarea.value = FIRST_PART.join('') + el + SECOND_PART.join('');
+  textareaPosition += n;
+  textarea.selectionStart = textareaPosition;
+}
+
+function updateKeyBoard(lang, size, code) {
+  rowsWrapper.remove();
+  buildKeyboard(lang, size, code);
+  addKeyListener();
+}
+
 function mouseUp() {
   textarea.focus();
+  textarea.setSelectionRange(textareaPosition, textareaPosition);
+  if (isShift === 'ShiftRight' || isShift === 'ShiftLeft') {
+    isShift = '';
+    letterSize = 'default';
+    updateKeyBoard(language, letterSize);
+  }
 }
 
 function mouseDown() {
-  textarea.focus();
-  textarea.value += this.textContent;
+  if (this.classList.contains('ShiftLeft')) {
+    isShift = 'ShiftLeft';
+    letterSize = 'shift';
+    updateKeyBoard(language, letterSize, isShift);
+    return;
+  }
+  if (this.classList.contains('ShiftRight')) {
+    isShift = 'ShiftRight';
+    letterSize = 'shift';
+    updateKeyBoard(language, letterSize, isShift);
+    return;
+  }
+  if (this.classList.contains('CapsLock') && letterSize !== 'caps') {
+    letterSize = 'caps';
+    updateKeyBoard(language, letterSize);
+    return;
+  }
+  if (letterSize === 'caps' && this.classList.contains('CapsLock')) {
+    letterSize = 'default';
+    updateKeyBoard(language, letterSize);
+    return;
+  }
+  if (this.classList.contains('Enter')) {
+    const ENTER = '\n';
+    updateTextarea(ENTER, 1, 0);
+    return;
+  }
+  if (this.classList.contains('Backspace') && textareaPosition > 0) {
+    updateTextarea('', -1, 1);
+    return;
+  }
+  if (this.classList.contains('Backspace')) {
+    return;
+  }
+  updateTextarea(this.textContent, 1, 0);
 }
 
 function addKeyListener() {
@@ -79,9 +137,7 @@ function changeLanguage() {
     language = 'ua';
   } else language = 'en';
   setTimeout(() => {
-    rowsWrapper.remove();
-    buildKeyboard(language, letterSize);
-    addKeyListener();
+    updateKeyBoard(language, letterSize);
   }, 100);
 }
 
@@ -99,17 +155,13 @@ document.addEventListener('keydown', (event) => {
       event.preventDefault();
       if (event.code === 'CapsLock') {
         letterSize = 'caps';
-        rowsWrapper.remove();
-        buildKeyboard(language, letterSize);
-        addKeyListener();
+        updateKeyBoard(language, letterSize);
         return;
       }
       if (event.code === 'ShiftLeft' || event.code === 'ShiftRight') {
         letterSize = 'shift';
         isShift = event.code;
-        rowsWrapper.remove();
-        buildKeyboard(language, letterSize, isShift);
-        addKeyListener();
+        updateKeyBoard(language, letterSize, isShift);
         return;
       }
       if (event.code === 'Tab') {
@@ -123,6 +175,7 @@ document.addEventListener('keydown', (event) => {
       if (event.code === 'ControlLeft' || event.code === 'ControlRight' || event.code === 'AltLeft' || event.code === 'AltRight' || event.code === 'MetaRight' || event.code === 'MetaLeft') {
         return;
       }
+      textareaPosition += 1;
       textarea.value += keyButtons[i].textContent;
       return;
     }
@@ -136,16 +189,12 @@ document.addEventListener('keyup', (event) => {
       keyButtons[i].classList.remove('key-button_active');
       if (event.code === 'CapsLock') {
         letterSize = 'default';
-        rowsWrapper.remove();
-        buildKeyboard(language, letterSize);
-        addKeyListener();
+        updateKeyBoard(language, letterSize);
         return;
       }
       if (event.code === 'ShiftLeft' || event.code === 'ShiftRight') {
         letterSize = 'default';
-        rowsWrapper.remove();
-        buildKeyboard(language, letterSize);
-        addKeyListener();
+        updateKeyBoard(language, letterSize);
         return;
       }
     }
