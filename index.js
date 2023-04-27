@@ -137,13 +137,13 @@ function addKeyListener() {
 
 addKeyListener();
 
-function changeLanguage() {
+function changeLanguage(time) {
   if (language === 'en') {
     language = 'ua';
   } else language = 'en';
   setTimeout(() => {
     updateKeyBoard(language, letterSize);
-  }, 100);
+  }, time);
 }
 
 document.addEventListener('keydown', (event) => {
@@ -171,7 +171,8 @@ document.addEventListener('keydown', (event) => {
         return;
       }
       if (keyButtons[54].classList.contains('key-button_active') && event.code === 'MetaLeft') {
-        changeLanguage();
+        const SET_TIME = 100;
+        changeLanguage(SET_TIME);
         return;
       }
       if (event.code === 'ControlLeft' || event.code === 'ControlRight' || event.code === 'AltLeft' || event.code === 'AltRight' || event.code === 'MetaRight' || event.code === 'MetaLeft') {
@@ -201,3 +202,20 @@ document.addEventListener('keyup', (event) => {
     }
   }
 });
+
+function setLocalStorage() {
+  localStorage.setItem('language', language);
+}
+window.addEventListener('beforeunload', setLocalStorage);
+
+function getLocalStorage() {
+  if (localStorage.getItem('language')) {
+    language = localStorage.getItem('language');
+    if (language === 'en') {
+      language = 'ua';
+    } else language = 'en';
+    const SET_TIME = 0;
+    changeLanguage(SET_TIME);
+  }
+}
+window.addEventListener('load', getLocalStorage);
