@@ -67,6 +67,7 @@ function updateTextarea(el, n, l) {
   textarea.value = FIRST_PART.join('') + el + SECOND_PART.join('');
   textareaPosition += n;
   textarea.selectionStart = textareaPosition;
+  textarea.setSelectionRange(textareaPosition, textareaPosition);
 }
 
 function updateKeyBoard(lang, size, code) {
@@ -113,11 +114,15 @@ function mouseDown() {
     updateTextarea(ENTER, 1, 0);
     return;
   }
+  if (this.classList.contains('Tab')) {
+    updateTextarea('    ', 4, 0);
+    return;
+  }
   if (this.classList.contains('Backspace') && textareaPosition > 0) {
     updateTextarea('', -1, 1);
     return;
   }
-  if (this.classList.contains('Backspace')) {
+  if (this.classList.contains('Backspace') || this.classList.contains('MetaLeft') || this.classList.contains('MetaRight') || this.classList.contains('ControlLeft') || this.classList.contains('ControlRight') || this.classList.contains('AltLeft') || this.classList.contains('AltRight')) {
     return;
   }
   updateTextarea(this.textContent, 1, 0);
@@ -146,10 +151,7 @@ document.addEventListener('keydown', (event) => {
   for (let i = 0; i < keyButtons.length; i += 1) {
     if (keyButtons[i].classList.contains(event.code)) {
       keyButtons[i].classList.add('key-button_active');
-      if (event.code === 'Backspace') {
-        return;
-      }
-      if (event.code === 'Enter') {
+      if (event.code === 'Backspace' || event.code === 'Enter') {
         return;
       }
       event.preventDefault();
@@ -165,7 +167,7 @@ document.addEventListener('keydown', (event) => {
         return;
       }
       if (event.code === 'Tab') {
-        textarea.value += '    ';
+        updateTextarea('    ', 4, 0);
         return;
       }
       if (keyButtons[54].classList.contains('key-button_active') && event.code === 'MetaLeft') {
@@ -175,8 +177,7 @@ document.addEventListener('keydown', (event) => {
       if (event.code === 'ControlLeft' || event.code === 'ControlRight' || event.code === 'AltLeft' || event.code === 'AltRight' || event.code === 'MetaRight' || event.code === 'MetaLeft') {
         return;
       }
-      textareaPosition += 1;
-      textarea.value += keyButtons[i].textContent;
+      updateTextarea(keyButtons[i].textContent, 1, 0);
       return;
     }
   }
