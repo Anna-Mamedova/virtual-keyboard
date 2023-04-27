@@ -6,11 +6,13 @@ const KEY_VALUES = [
         default: "'",
         shift: '~',
         caps: "'",
+        option: ']',
       },
       en: {
         default: '`',
         shift: '~',
         caps: '`',
+        option: '`',
       },
     },
     {
@@ -19,11 +21,13 @@ const KEY_VALUES = [
         default: '1',
         shift: '!',
         caps: '1',
+        option: '!',
       },
       en: {
         default: '1',
         shift: '!',
         caps: '1',
+        option: '¡',
       },
     },
     {
@@ -32,11 +36,13 @@ const KEY_VALUES = [
         default: '2',
         shift: '"',
         caps: '2',
+        option: '@',
       },
       en: {
         default: '2',
         shift: '@',
         caps: '2',
+        option: '™',
       },
     },
     {
@@ -45,11 +51,13 @@ const KEY_VALUES = [
         default: '3',
         shift: '№',
         caps: '3',
+        option: '#',
       },
       en: {
         default: '3',
         shift: '#',
         caps: '3',
+        option: '£',
       },
     },
     {
@@ -58,11 +66,13 @@ const KEY_VALUES = [
         default: '4',
         shift: '%',
         caps: '4',
+        option: '$',
       },
       en: {
         default: '4',
         shift: '$',
         caps: '4',
+        option: '¢',
       },
     },
     {
@@ -71,11 +81,13 @@ const KEY_VALUES = [
         default: '5',
         shift: ':',
         caps: '5',
+        option: '%',
       },
       en: {
         default: '5',
         shift: '%',
         caps: '5',
+        option: '∞',
       },
     },
     {
@@ -84,11 +96,13 @@ const KEY_VALUES = [
         default: '6',
         shift: ',',
         caps: '6',
+        option: '^',
       },
       en: {
         default: '6',
         shift: '^',
         caps: '6',
+        option: '§',
       },
     },
     {
@@ -97,11 +111,13 @@ const KEY_VALUES = [
         default: '7',
         shift: '.',
         caps: '7',
+        option: '&',
       },
       en: {
         default: '7',
         shift: '&',
         caps: '7',
+        option: '¶',
       },
     },
     {
@@ -110,11 +126,13 @@ const KEY_VALUES = [
         default: '8',
         shift: ';',
         caps: '8',
+        option: '*',
       },
       en: {
         default: '8',
         shift: '*',
         caps: '8',
+        option: '•',
       },
     },
     {
@@ -123,11 +141,13 @@ const KEY_VALUES = [
         default: '9',
         shift: '(',
         caps: '9',
+        option: '(',
       },
       en: {
         default: '9',
         shift: '(',
         caps: '9',
+        option: 'ª',
       },
     },
     {
@@ -136,11 +156,13 @@ const KEY_VALUES = [
         default: '0',
         shift: ')',
         caps: '0',
+        option: ')',
       },
       en: {
         default: '0',
         shift: ')',
         caps: '0',
+        option: 'º',
       },
     },
     {
@@ -149,11 +171,13 @@ const KEY_VALUES = [
         default: '-',
         shift: '_',
         caps: '-',
+        option: '–',
       },
       en: {
         default: '-',
         shift: '_',
         caps: '-',
+        option: '–',
       },
     },
     {
@@ -162,11 +186,13 @@ const KEY_VALUES = [
         default: '=',
         shift: '+',
         caps: '=',
+        option: '»',
       },
       en: {
         default: '=',
         shift: '+',
         caps: '=',
+        option: '≠',
       },
     },
     {
@@ -175,11 +201,13 @@ const KEY_VALUES = [
         default: 'delete',
         shift: 'delete',
         caps: 'delete',
+        option: 'delete',
       },
       en: {
         default: 'delete',
         shift: 'delete',
         caps: 'delete',
+        option: 'delete',
       },
     },
   ],
@@ -190,11 +218,13 @@ const KEY_VALUES = [
         default: 'tab',
         shift: 'tab',
         caps: 'tab',
+        option: 'tab',
       },
       en: {
         default: 'tab',
         shift: 'tab',
         caps: 'tab',
+        option: 'tab',
       },
     },
     {
@@ -203,11 +233,13 @@ const KEY_VALUES = [
         default: 'й',
         shift: 'Й',
         caps: 'Й',
+        option: 'ј',
       },
       en: {
         default: 'q',
         shift: 'Q',
         caps: 'Q',
+        option: 'œ',
       },
     },
     {
@@ -216,11 +248,13 @@ const KEY_VALUES = [
         default: 'ц',
         shift: 'Ц',
         caps: 'Ц',
+        option: 'џ',
       },
       en: {
         default: 'w',
         shift: 'W',
         caps: 'W',
+        option: '∑',
       },
     },
     {
@@ -229,11 +263,13 @@ const KEY_VALUES = [
         default: 'у',
         shift: 'У',
         caps: 'У',
+        option: 'ќ',
       },
       en: {
         default: 'e',
         shift: 'E',
         caps: 'E',
+        option: '´',
       },
     },
     {
@@ -242,11 +278,13 @@ const KEY_VALUES = [
         default: 'к',
         shift: 'К',
         caps: 'К',
+        option: '®',
       },
       en: {
         default: 'r',
         shift: 'R',
         caps: 'R',
+        option: '®',
       },
     },
     {
@@ -255,11 +293,13 @@ const KEY_VALUES = [
         default: 'е',
         shift: 'Е',
         caps: 'Е',
+        option: '†',
       },
       en: {
         default: 't',
         shift: 'T',
         caps: 'T',
+        option: '†',
       },
     },
     {
@@ -268,11 +308,13 @@ const KEY_VALUES = [
         default: 'н',
         shift: 'Н',
         caps: 'Н',
+        option: 'њ',
       },
       en: {
         default: 'y',
         shift: 'Y',
         caps: 'Y',
+        option: '¥',
       },
     },
     {
@@ -281,11 +323,13 @@ const KEY_VALUES = [
         default: 'г',
         shift: 'Г',
         caps: 'Г',
+        option: 'ѓ',
       },
       en: {
         default: 'u',
         shift: 'U',
         caps: 'U',
+        option: '¨',
       },
     },
     {
@@ -294,11 +338,13 @@ const KEY_VALUES = [
         default: 'ш',
         shift: 'Ш',
         caps: 'Ш',
+        option: 'ѕ',
       },
       en: {
         default: 'i',
         shift: 'I',
         caps: 'I',
+        option: 'ˆ',
       },
     },
     {
@@ -307,11 +353,13 @@ const KEY_VALUES = [
         default: 'щ',
         shift: 'Щ',
         caps: 'Щ',
+        option: 'ў',
       },
       en: {
         default: 'o',
         shift: 'O',
         caps: 'O',
+        option: 'ø',
       },
     },
     {
@@ -320,11 +368,13 @@ const KEY_VALUES = [
         default: 'з',
         shift: 'З',
         caps: 'З',
+        option: '‘',
       },
       en: {
         default: 'p',
         shift: 'P',
         caps: 'P',
+        option: 'π',
       },
     },
     {
@@ -333,11 +383,13 @@ const KEY_VALUES = [
         default: 'х',
         shift: 'Х',
         caps: 'Х',
+        option: '“',
       },
       en: {
         default: '[',
         shift: '{',
         caps: '[',
+        option: '“',
       },
     },
     {
@@ -346,11 +398,13 @@ const KEY_VALUES = [
         default: 'ї',
         shift: 'Ї',
         caps: 'Ї',
+        option: 'ъ',
       },
       en: {
         default: ']',
         shift: '}',
         caps: ']',
+        option: '‘',
       },
     },
     {
@@ -359,11 +413,13 @@ const KEY_VALUES = [
         default: 'ґ',
         shift: 'Ґ',
         caps: 'Ґ',
+        option: 'ё',
       },
       en: {
         default: '\\',
         shift: '|',
         caps: '\\',
+        option: '«',
       },
     },
   ],
@@ -374,11 +430,13 @@ const KEY_VALUES = [
         default: 'caps lock',
         shift: 'caps lock',
         caps: 'caps lock',
+        option: 'caps lock',
       },
       en: {
         default: 'caps lock',
         shift: 'caps lock',
         caps: 'caps lock',
+        option: 'caps lock',
       },
     },
     {
@@ -387,11 +445,13 @@ const KEY_VALUES = [
         default: 'ф',
         shift: 'Ф',
         caps: 'Ф',
+        option: 'ƒ',
       },
       en: {
         default: 'a',
         shift: 'A',
         caps: 'A',
+        option: 'å',
       },
     },
     {
@@ -400,11 +460,13 @@ const KEY_VALUES = [
         default: 'и',
         shift: 'И',
         caps: 'И',
+        option: 'ы',
       },
       en: {
         default: 's',
         shift: 'S',
         caps: 'S',
+        option: 'ß',
       },
     },
     {
@@ -413,11 +475,13 @@ const KEY_VALUES = [
         default: 'в',
         shift: 'В',
         caps: 'В',
+        option: 'ћ',
       },
       en: {
         default: 'd',
         shift: 'D',
         caps: 'D',
+        option: '∂',
       },
     },
     {
@@ -426,11 +490,13 @@ const KEY_VALUES = [
         default: 'а',
         shift: 'А',
         caps: 'А',
+        option: '÷',
       },
       en: {
         default: 'f',
         shift: 'F',
         caps: 'F',
+        option: 'ƒ',
       },
     },
     {
@@ -439,11 +505,13 @@ const KEY_VALUES = [
         default: 'п',
         shift: 'П',
         caps: 'П',
+        option: '©',
       },
       en: {
         default: 'g',
         shift: 'G',
         caps: 'G',
+        option: '©',
       },
     },
     {
@@ -452,11 +520,13 @@ const KEY_VALUES = [
         default: 'р',
         shift: 'Р',
         caps: 'Р',
+        option: '}',
       },
       en: {
         default: 'h',
         shift: 'H',
         caps: 'H',
+        option: '˙',
       },
     },
     {
@@ -465,11 +535,13 @@ const KEY_VALUES = [
         default: 'о',
         shift: 'О',
         caps: 'О',
+        option: '°',
       },
       en: {
         default: 'j',
         shift: 'J',
         caps: 'J',
+        option: '∆',
       },
     },
     {
@@ -478,11 +550,13 @@ const KEY_VALUES = [
         default: 'л',
         shift: 'Л',
         caps: 'Л',
+        option: 'љ',
       },
       en: {
         default: 'k',
         shift: 'K',
         caps: 'K',
+        option: '˚',
       },
     },
     {
@@ -491,11 +565,13 @@ const KEY_VALUES = [
         default: 'д',
         shift: 'Д',
         caps: 'Д',
+        option: '∆',
       },
       en: {
         default: 'l',
         shift: 'L',
         caps: 'L',
+        option: '¬',
       },
     },
     {
@@ -504,11 +580,13 @@ const KEY_VALUES = [
         default: 'ж',
         shift: 'Ж',
         caps: 'Ж',
+        option: '…',
       },
       en: {
         default: ';',
         shift: ':',
         caps: ';',
+        option: '…',
       },
     },
     {
@@ -517,11 +595,13 @@ const KEY_VALUES = [
         default: 'є',
         shift: 'Є',
         caps: 'Є',
+        option: 'э',
       },
       en: {
         default: "'",
         shift: '"',
         caps: "'",
+        option: 'æ',
       },
     },
     {
@@ -530,11 +610,13 @@ const KEY_VALUES = [
         default: 'return',
         shift: 'return',
         caps: 'return',
+        option: 'return',
       },
       en: {
         default: 'return',
         shift: 'return',
         caps: 'return',
+        option: 'return',
       },
     },
   ],
@@ -545,11 +627,13 @@ const KEY_VALUES = [
         default: 'shift',
         shift: 'shift',
         caps: 'shift',
+        option: 'shift',
       },
       en: {
         default: 'shift',
         shift: 'shift',
         caps: 'shift',
+        option: 'shift',
       },
     },
     {
@@ -558,11 +642,13 @@ const KEY_VALUES = [
         default: 'я',
         shift: 'Я',
         caps: 'Я',
+        option: 'я',
       },
       en: {
         default: 'z',
         shift: 'Z',
         caps: 'Z',
+        option: 'z',
       },
     },
     {
@@ -571,11 +657,13 @@ const KEY_VALUES = [
         default: 'ч',
         shift: 'Ч',
         caps: 'Ч',
+        option: '≈',
       },
       en: {
         default: 'x',
         shift: 'X',
         caps: 'X',
+        option: '≈',
       },
     },
     {
@@ -584,11 +672,13 @@ const KEY_VALUES = [
         default: 'с',
         shift: 'С',
         caps: 'С',
+        option: '≠',
       },
       en: {
         default: 'c',
         shift: 'C',
         caps: 'C',
+        option: 'ç',
       },
     },
     {
@@ -597,11 +687,13 @@ const KEY_VALUES = [
         default: 'м',
         shift: 'М',
         caps: 'М',
+        option: 'µ',
       },
       en: {
         default: 'v',
         shift: 'V',
         caps: 'V',
+        option: '√',
       },
     },
     {
@@ -610,11 +702,13 @@ const KEY_VALUES = [
         default: 'і',
         shift: 'І',
         caps: 'І',
+        option: 'и',
       },
       en: {
         default: 'b',
         shift: 'B',
         caps: 'B',
+        option: '∫',
       },
     },
     {
@@ -623,11 +717,13 @@ const KEY_VALUES = [
         default: 'т',
         shift: 'Т',
         caps: 'Т',
+        option: '™',
       },
       en: {
         default: 'n',
         shift: 'N',
         caps: 'N',
+        option: '˜',
       },
     },
     {
@@ -636,11 +732,13 @@ const KEY_VALUES = [
         default: 'ь',
         shift: 'Ь',
         caps: 'Ь',
+        option: '~',
       },
       en: {
         default: 'm',
         shift: 'M',
         caps: 'M',
+        option: 'µ',
       },
     },
     {
@@ -649,11 +747,13 @@ const KEY_VALUES = [
         default: 'б',
         shift: 'Б',
         caps: 'Б',
+        option: '≤',
       },
       en: {
         default: ',',
         shift: '<',
         caps: ',',
+        option: '≤',
       },
     },
     {
@@ -662,11 +762,13 @@ const KEY_VALUES = [
         default: 'ю',
         shift: 'Ю',
         caps: 'Ю',
+        option: '≥',
       },
       en: {
         default: '.',
         shift: '>',
         caps: '.',
+        option: '≥',
       },
     },
     {
@@ -675,11 +777,13 @@ const KEY_VALUES = [
         default: '/',
         shift: '?',
         caps: '/',
+        option: '“',
       },
       en: {
         default: '/',
         shift: '?',
         caps: '/',
+        option: '÷',
       },
     },
     {
@@ -688,11 +792,13 @@ const KEY_VALUES = [
         default: '▲',
         shift: '▲',
         caps: '▲',
+        option: '▲',
       },
       en: {
         default: '▲',
         shift: '▲',
         caps: '▲',
+        option: '▲',
       },
     },
     {
@@ -701,11 +807,13 @@ const KEY_VALUES = [
         default: 'shift',
         shift: 'shift',
         caps: 'shift',
+        option: 'shift',
       },
       en: {
         default: 'shift',
         shift: 'shift',
         caps: 'shift',
+        option: 'shift',
       },
     },
   ],
@@ -716,11 +824,13 @@ const KEY_VALUES = [
         default: 'control',
         shift: 'control',
         caps: 'control',
+        option: 'control',
       },
       en: {
         default: 'control',
         shift: 'control',
         caps: 'control',
+        option: 'control',
       },
     },
     {
@@ -729,11 +839,13 @@ const KEY_VALUES = [
         default: 'option',
         shift: 'option',
         caps: 'option',
+        option: 'option',
       },
       en: {
         default: 'option',
         shift: 'option',
         caps: 'option',
+        option: 'option',
       },
     },
     {
@@ -742,11 +854,13 @@ const KEY_VALUES = [
         default: 'command',
         shift: 'command',
         caps: 'command',
+        option: 'command',
       },
       en: {
         default: 'command',
         shift: 'command',
         caps: 'command',
+        option: 'command',
       },
     },
     {
@@ -755,11 +869,13 @@ const KEY_VALUES = [
         default: ' ',
         shift: ' ',
         caps: ' ',
+        option: ' ',
       },
       en: {
         default: ' ',
         shift: ' ',
         caps: ' ',
+        option: ' ',
       },
     },
     {
@@ -768,11 +884,13 @@ const KEY_VALUES = [
         default: 'command',
         shift: 'command',
         caps: 'command',
+        option: 'command',
       },
       en: {
         default: 'command',
         shift: 'command',
         caps: 'command',
+        option: 'command',
       },
     },
     {
@@ -781,11 +899,13 @@ const KEY_VALUES = [
         default: 'option',
         shift: 'option',
         caps: 'option',
+        option: 'option',
       },
       en: {
         default: 'option',
         shift: 'option',
         caps: 'option',
+        option: 'option',
       },
     },
     {
@@ -794,11 +914,13 @@ const KEY_VALUES = [
         default: '◀',
         shift: '◀',
         caps: '◀',
+        option: '◀',
       },
       en: {
         default: '◀',
         shift: '◀',
         caps: '◀',
+        option: '◀',
       },
     },
     {
@@ -807,11 +929,13 @@ const KEY_VALUES = [
         default: '▼',
         shift: '▼',
         caps: '▼',
+        option: '▼',
       },
       en: {
         default: '▼',
         shift: '▼',
         caps: '▼',
+        option: '▼',
       },
     },
     {
@@ -820,11 +944,13 @@ const KEY_VALUES = [
         default: '▶',
         shift: '▶',
         caps: '▶',
+        option: '▶',
       },
       en: {
         default: '▶',
         shift: '▶',
         caps: '▶',
+        option: '▶',
       },
     },
   ],

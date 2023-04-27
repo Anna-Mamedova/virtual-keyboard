@@ -6,7 +6,6 @@ let keyButtons;
 let rowsWrapper;
 let textarea;
 let textareaPosition = 0;
-let isShift = '';
 
 function getAllEl() {
   textarea = document.createElement('textarea');
@@ -53,6 +52,14 @@ function buildKeyboard(lang, size, code) {
       keyButtons[53].classList.add('key-button_active');
     }
   }
+  if (size === 'option') {
+    if (code === 'AltLeft') {
+      keyButtons[55].classList.add('key-button_active');
+    }
+    if (code === 'AltRight') {
+      keyButtons[59].classList.add('key-button_active');
+    }
+  }
 }
 
 buildKeyboard(language, letterSize);
@@ -73,69 +80,7 @@ function updateTextarea(el, n, l) {
 function updateKeyBoard(lang, size, code) {
   rowsWrapper.remove();
   buildKeyboard(lang, size, code);
-  addKeyListener();
 }
-
-function mouseUp() {
-  textarea.focus();
-  textarea.setSelectionRange(textareaPosition, textareaPosition);
-  if (isShift === 'ShiftRight' || isShift === 'ShiftLeft') {
-    isShift = '';
-    letterSize = 'default';
-    updateKeyBoard(language, letterSize);
-  }
-}
-
-function mouseDown() {
-  if (this.classList.contains('ShiftLeft')) {
-    isShift = 'ShiftLeft';
-    letterSize = 'shift';
-    updateKeyBoard(language, letterSize, isShift);
-    return;
-  }
-  if (this.classList.contains('ShiftRight')) {
-    isShift = 'ShiftRight';
-    letterSize = 'shift';
-    updateKeyBoard(language, letterSize, isShift);
-    return;
-  }
-  if (this.classList.contains('CapsLock') && letterSize !== 'caps') {
-    letterSize = 'caps';
-    updateKeyBoard(language, letterSize);
-    return;
-  }
-  if (letterSize === 'caps' && this.classList.contains('CapsLock')) {
-    letterSize = 'default';
-    updateKeyBoard(language, letterSize);
-    return;
-  }
-  if (this.classList.contains('Enter')) {
-    const ENTER = '\n';
-    updateTextarea(ENTER, 1, 0);
-    return;
-  }
-  if (this.classList.contains('Tab')) {
-    updateTextarea('    ', 4, 0);
-    return;
-  }
-  if (this.classList.contains('Backspace') && textareaPosition > 0) {
-    updateTextarea('', -1, 1);
-    return;
-  }
-  if (this.classList.contains('Backspace') || this.classList.contains('MetaLeft') || this.classList.contains('MetaRight') || this.classList.contains('ControlLeft') || this.classList.contains('ControlRight') || this.classList.contains('AltLeft') || this.classList.contains('AltRight')) {
-    return;
-  }
-  updateTextarea(this.textContent, 1, 0);
-}
-
-function addKeyListener() {
-  for (let i = 0; i < keyButtons.length; i += 1) {
-    keyButtons[i].addEventListener('mousedown', mouseDown);
-    keyButtons[i].addEventListener('mouseup', mouseUp);
-  }
-}
-
-addKeyListener();
 
 function changeLanguage(time) {
   if (language === 'en') {
@@ -146,15 +91,88 @@ function changeLanguage(time) {
   }, time);
 }
 
+document.addEventListener('mousedown', (event) => {
+  if (event.target.classList.contains('key-button')) {
+    if (event.target.classList.contains('ShiftLeft')) {
+      letterSize = 'shift';
+      updateKeyBoard(language, letterSize, 'ShiftLeft');
+      return;
+    }
+    if (event.target.classList.contains('ShiftRight')) {
+      letterSize = 'shift';
+      updateKeyBoard(language, letterSize, 'ShiftRight');
+      return;
+    }
+    if (event.target.classList.contains('AltLeft')) {
+      letterSize = 'option';
+      updateKeyBoard(language, letterSize, 'AltLeft');
+      return;
+    }
+    if (event.target.classList.contains('AltRight')) {
+      letterSize = 'option';
+      updateKeyBoard(language, letterSize, 'AltRight');
+      return;
+    }
+    if (event.target.classList.contains('CapsLock') && letterSize !== 'caps') {
+      letterSize = 'caps';
+      updateKeyBoard(language, letterSize);
+      return;
+    }
+    if (letterSize === 'caps' && event.target.classList.contains('CapsLock')) {
+      letterSize = 'default';
+      updateKeyBoard(language, letterSize);
+      return;
+    }
+    if (event.target.classList.contains('Enter')) {
+      const ENTER = '\n';
+      updateTextarea(ENTER, 1, 0);
+      return;
+    }
+    if (event.target.classList.contains('Tab')) {
+      updateTextarea('    ', 4, 0);
+      return;
+    }
+    if (event.target.classList.contains('Backspace') && textareaPosition > 0) {
+      updateTextarea('', -1, 1);
+      return;
+    }
+    if (event.target.classList.contains('Backspace') || event.target.classList.contains('MetaLeft') || event.target.classList.contains('MetaRight') || event.target.classList.contains('ControlLeft') || event.target.classList.contains('ControlRight') || event.target.classList.contains('AltLeft') || event.target.classList.contains('AltRight')) {
+      return;
+    }
+    updateTextarea(event.target.textContent, 1, 0);
+  }
+});
+
+document.addEventListener('mouseup', (event) => {
+  if (event.target.classList.contains('key-button')) {
+    textarea.focus();
+    textarea.setSelectionRange(textareaPosition, textareaPosition);
+    if (event.target.classList.contains('ShiftRight') || event.target.classList.contains('ShiftLeft')) {
+      letterSize = 'default';
+      updateKeyBoard(language, letterSize);
+    }
+    if (event.target.classList.contains('AltRight') || event.target.classList.contains('AltLeft')) {
+      letterSize = 'default';
+      updateKeyBoard(language, letterSize);
+    }
+  }
+});
+
 document.addEventListener('keydown', (event) => {
   textarea.focus();
   for (let i = 0; i < keyButtons.length; i += 1) {
     if (keyButtons[i].classList.contains(event.code)) {
       keyButtons[i].classList.add('key-button_active');
-      if (event.code === 'Backspace' || event.code === 'Enter') {
+      event.preventDefault();
+      if (event.code === 'Enter') {
+        const ENTER = '\n';
+        updateTextarea(ENTER, 1, 0);
         return;
       }
-      event.preventDefault();
+      if (event.code === 'Backspace' && textareaPosition > 0) {
+        updateTextarea('', -1, 1);
+        return;
+      }
       if (event.code === 'CapsLock') {
         letterSize = 'caps';
         updateKeyBoard(language, letterSize);
@@ -162,20 +180,24 @@ document.addEventListener('keydown', (event) => {
       }
       if (event.code === 'ShiftLeft' || event.code === 'ShiftRight') {
         letterSize = 'shift';
-        isShift = event.code;
-        updateKeyBoard(language, letterSize, isShift);
+        updateKeyBoard(language, letterSize, event.code);
         return;
       }
       if (event.code === 'Tab') {
         updateTextarea('    ', 4, 0);
         return;
       }
-      if (keyButtons[54].classList.contains('key-button_active') && event.code === 'MetaLeft') {
+      if ((keyButtons[54].classList.contains('key-button_active') && event.code === 'MetaLeft') || (keyButtons[56].classList.contains('key-button_active') && event.code === 'ControlLeft')) {
         const SET_TIME = 100;
         changeLanguage(SET_TIME);
         return;
       }
-      if (event.code === 'ControlLeft' || event.code === 'ControlRight' || event.code === 'AltLeft' || event.code === 'AltRight' || event.code === 'MetaRight' || event.code === 'MetaLeft') {
+      if (event.code === 'ControlLeft' || event.code === 'ControlRight' || event.code === 'MetaRight' || event.code === 'MetaLeft' || event.code === 'Backspace') {
+        return;
+      }
+      if (event.code === 'AltLeft' || event.code === 'AltRight') {
+        letterSize = 'option';
+        updateKeyBoard(language, letterSize, event.code);
         return;
       }
       updateTextarea(keyButtons[i].textContent, 1, 0);
@@ -195,6 +217,11 @@ document.addEventListener('keyup', (event) => {
         return;
       }
       if (event.code === 'ShiftLeft' || event.code === 'ShiftRight') {
+        letterSize = 'default';
+        updateKeyBoard(language, letterSize);
+        return;
+      }
+      if (event.code === 'AltLeft' || event.code === 'AltRight') {
         letterSize = 'default';
         updateKeyBoard(language, letterSize);
         return;
