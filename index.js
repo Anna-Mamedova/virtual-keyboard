@@ -89,13 +89,11 @@ function updateKeyBoard(lang, size, code) {
   buildKeyboard(lang, size, code);
 }
 
-function changeLanguage(time, code) {
+function changeLanguage(code) {
   if (language === 'en') {
     language = 'ua';
   } else language = 'en';
-  setTimeout(() => {
-    updateKeyBoard(language, letterSize, code);
-  }, time);
+  updateKeyBoard(language, letterSize, code);
 }
 
 document.addEventListener('mousedown', (event) => {
@@ -235,8 +233,7 @@ document.addEventListener('keydown', (event) => {
         return;
       }
       if ((keyButtons[54].classList.contains('key-button_active') && event.code === 'MetaLeft') || (keyButtons[56].classList.contains('key-button_active') && event.code === 'ControlLeft')) {
-        const SET_TIME = 100;
-        changeLanguage(SET_TIME, event.code);
+        changeLanguage(event.code);
         return;
       }
       if (event.code === 'ControlLeft' || event.code === 'ControlRight' || event.code === 'MetaRight' || event.code === 'MetaLeft' || event.code === 'Backspace') {
@@ -322,8 +319,7 @@ function getLocalStorage() {
     if (language === 'en') {
       language = 'ua';
     } else language = 'en';
-    const SET_TIME = 0;
-    changeLanguage(SET_TIME);
+    changeLanguage();
   }
 }
 window.addEventListener('load', getLocalStorage);
