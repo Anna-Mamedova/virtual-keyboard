@@ -36,8 +36,9 @@
 }
 
 .key-button {
+    cursor: pointer;
     font-size: 18px;
-    color: gray;
+    color: darkgray;
     margin: 5px;
     height: 50px;
     width: 50px;
@@ -46,10 +47,12 @@
     background: white;
     box-shadow:  5px 5px 13px #9d7e8d,
                  -5px -5px 13px #ffdcf5;
+    transition: all ease-in-out 150ms;
 }
-
+                
 .key-button:hover {
-    background: linear-gradient(145deg, #e6e6e6, #ffffff);
+    color: gray;
+    background: #f0f0f0;
     box-shadow:  5px 5px 13px #9d7e8d,
                  -5px -5px 13px #ffdcf5;
 }
@@ -57,9 +60,10 @@
 .key-button:active,
 .key-button_active,
 .key-button_active:hover { 
+    color: darkgray;
     background: #ffffff;
     box-shadow: inset 5px 5px 13px #bababa,
-            inset -5px -5px 13px #ffffff;
+                inset -5px -5px 13px #ffffff;
 }
 
 .Backspace,
