@@ -3,6 +3,7 @@ import KEY_VALUES from './key-values.js';
 let language = 'en';
 let letterSize = 'default';
 let isShift = '';
+let isOption = '';
 let isCaps = false;
 let keyButtons;
 let rowsWrapper;
@@ -54,11 +55,11 @@ function buildKeyboard(lang, size, code) {
       keyButtons[53].classList.add('key-button_active');
     }
   }
-  if (size === 'option') {
-    if (code === 'AltLeft') {
+  if (size === 'option' || isOption.length > 0) {
+    if (code === 'AltLeft' || isOption === 'AltLeft') {
       keyButtons[55].classList.add('key-button_active');
     }
-    if (code === 'AltRight') {
+    if (code === 'AltRight' || isOption === 'AltRight') {
       keyButtons[59].classList.add('key-button_active');
     }
   }
@@ -112,13 +113,15 @@ document.addEventListener('mousedown', (event) => {
       return;
     }
     if (event.target.classList.contains('AltLeft')) {
+      isOption = 'AltLeft';
       letterSize = 'option';
-      updateKeyBoard(language, letterSize, 'AltLeft');
+      updateKeyBoard(language, letterSize, isOption);
       return;
     }
     if (event.target.classList.contains('AltRight')) {
+      isOption = 'AltRight';
       letterSize = 'option';
-      updateKeyBoard(language, letterSize, 'AltRight');
+      updateKeyBoard(language, letterSize, isOption);
       return;
     }
     if (event.target.classList.contains('CapsLock') && letterSize !== 'caps') {
@@ -128,6 +131,17 @@ document.addEventListener('mousedown', (event) => {
       return;
     }
     if (letterSize === 'caps' && event.target.classList.contains('CapsLock')) {
+      isCaps = false;
+      if (isShift.length > 0) {
+        letterSize = 'shift';
+        updateKeyBoard(language, letterSize, isShift);
+        return;
+      }
+      if (isOption.length > 0) {
+        letterSize = 'option';
+        updateKeyBoard(language, letterSize, isOption);
+        return;
+      }
       letterSize = 'default';
       updateKeyBoard(language, letterSize);
       return;
@@ -157,10 +171,32 @@ document.addEventListener('mouseup', (event) => {
     textarea.focus();
     textarea.setSelectionRange(textareaPosition, textareaPosition);
     if (event.target.classList.contains('ShiftRight') || event.target.classList.contains('ShiftLeft')) {
+      isShift = '';
+      if (isCaps) {
+        letterSize = 'caps';
+        updateKeyBoard(language, letterSize);
+        return;
+      }
+      if (isOption.length > 0) {
+        letterSize = 'option';
+        updateKeyBoard(language, letterSize, isOption);
+        return;
+      }
       letterSize = 'default';
       updateKeyBoard(language, letterSize);
     }
     if (event.target.classList.contains('AltRight') || event.target.classList.contains('AltLeft')) {
+      isOption = '';
+      if (isCaps) {
+        letterSize = 'caps';
+        updateKeyBoard(language, letterSize);
+        return;
+      }
+      if (isShift.length > 0) {
+        letterSize = 'shift';
+        updateKeyBoard(language, letterSize, isShift);
+        return;
+      }
       letterSize = 'default';
       updateKeyBoard(language, letterSize);
     }
@@ -208,7 +244,8 @@ document.addEventListener('keydown', (event) => {
       }
       if (event.code === 'AltLeft' || event.code === 'AltRight') {
         letterSize = 'option';
-        updateKeyBoard(language, letterSize, event.code);
+        isOption = event.code;
+        updateKeyBoard(language, letterSize, isOption);
         return;
       }
       updateTextarea(keyButtons[i].textContent, 1, 0);
@@ -229,6 +266,11 @@ document.addEventListener('keyup', (event) => {
           updateKeyBoard(language, letterSize);
           return;
         }
+        if (isOption.length > 0) {
+          letterSize = 'option';
+          updateKeyBoard(language, letterSize, isOption);
+          return;
+        }
         letterSize = 'default';
         updateKeyBoard(language, letterSize);
         return;
@@ -240,11 +282,27 @@ document.addEventListener('keyup', (event) => {
           updateKeyBoard(language, letterSize);
           return;
         }
+        if (isOption.length > 0) {
+          letterSize = 'option';
+          updateKeyBoard(language, letterSize, isOption);
+          return;
+        }
         letterSize = 'default';
         updateKeyBoard(language, letterSize);
         return;
       }
       if (event.code === 'AltLeft' || event.code === 'AltRight') {
+        isOption = '';
+        if (isCaps) {
+          letterSize = 'caps';
+          updateKeyBoard(language, letterSize);
+          return;
+        }
+        if (isShift.length > 0) {
+          letterSize = 'shift';
+          updateKeyBoard(language, letterSize, isShift);
+          return;
+        }
         letterSize = 'default';
         updateKeyBoard(language, letterSize);
         return;
