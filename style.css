@@ -1,0 +1,120 @@
+.key-title {
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.text-area {
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 10px;
+    font-size: 18px;
+    border-radius: 10px;
+    display: block;
+    margin: auto;
+    margin-bottom: 20px;
+    border: 2px solid #d7adc1;
+    width: 600px;
+    min-height: 100px;
+    line-height: 20px;
+}
+
+.text-area:focus {
+    outline: none;
+    border: 2px solid #9d7e8d;
+}
+
+.rows-wrapper {
+    margin: auto;
+    border: 4px solid #d7adc1;
+    background: #ffdcf5;
+    border-radius: 20px;
+    padding: 10px;
+    width: 865px;
+}
+
+.row {
+    display: flex;
+}
+
+.key-button {
+    cursor: pointer;
+    font-size: 18px;
+    color: darkgray;
+    margin: 5px;
+    height: 50px;
+    width: 50px;
+    border: none;
+    border-radius: 5px;
+    background: white;
+    box-shadow:  5px 5px 13px #9d7e8d,
+                 -5px -5px 13px #ffdcf5;
+    transition: all ease-in-out 150ms;
+}
+                
+.key-button:hover {
+    color: gray;
+    background: #f0f0f0;
+    box-shadow:  5px 5px 13px #9d7e8d,
+                 -5px -5px 13px #ffdcf5;
+}
+
+.key-button:active,
+.key-button_active,
+.key-button_active:hover { 
+    color: darkgray;
+    background: #ffffff;
+    box-shadow: inset 5px 5px 13px #bababa,
+                inset -5px -5px 13px #ffffff;
+}
+
+.Backspace,
+.Tab {
+    width: 75px;
+}
+
+.CapsLock,
+.Enter {
+    width: 92px;
+}
+
+.ShiftLeft {
+    width: 135px;
+}
+
+.MetaLeft,
+.MetaRight {
+    width: 70px;
+}
+
+.Space {
+    width: 335px;
+}
+
+.Backspace,
+.Enter,
+.ShiftRight {
+    font-size: 13px;
+    text-align: end;
+    padding-top: 30px;
+}
+
+.Tab,
+.CapsLock,
+.ShiftLeft {
+    font-size: 13px;
+    text-align: start;
+    padding-top: 30px;
+}
+
+.MetaLeft,
+.MetaRight,
+.ControlLeft,
+.AltLeft,
+.AltRight {
+    font-size: 13px;
+    padding-top: 30px;
+}
+
+.key-info {
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+}
